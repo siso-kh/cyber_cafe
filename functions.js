@@ -241,3 +241,71 @@ export function gauge(input){
         chartVersion.innerText = Chart.version;
     }
 }
+
+export function checkAlerts(internetSpeed, temperature) {
+
+    let alertZone = document.getElementById("alertZone");
+    if (!alertZone) {
+        alertZone = document.createElement("div");
+        alertZone.id = "alertZone";
+        alertZone.style.position = "fixed";
+        alertZone.style.top = "20px";
+        alertZone.style.right = "20px";
+        alertZone.style.zIndex = "9999";
+        alertZone.style.display = "flex";
+        alertZone.style.flexDirection = "column";
+        alertZone.style.gap = "10px";
+        document.body.appendChild(alertZone);
+    }
+
+    alertZone.innerHTML = ""; 
+
+    let alerts = [];
+
+    if (temperature > 70) {
+        alerts.push({
+            type: "danger",
+            message: `High Temperature: ${temperature}°C`
+        });
+    }
+
+    if (internetSpeed < 5) {
+        alerts.push({
+            type: "warning",
+            message: `Slow Internet: ${internetSpeed} Mb/s`
+        });
+    }
+
+    alerts.forEach(alert => {
+        const box = document.createElement("div");
+
+        box.style.padding = "15px 20px";
+        box.style.borderRadius = "8px";
+        box.style.fontSize = "18px";
+        box.style.fontWeight = "bold";
+        box.style.color = "white";
+        box.style.boxShadow = "0 0 10px rgba(0,0,0,0.5)";
+        box.style.opacity = "0";
+        box.style.transition = "opacity 0.4s ease";
+
+        if (alert.type === "danger") {
+            box.style.background = "linear-gradient(#ff2e2e, #b30000)";
+        } 
+        else if (alert.type === "warning") {
+            box.style.background = "linear-gradient(#ffcc00, #b38f00)";
+        }
+
+        box.textContent = alert.message;
+
+        alertZone.appendChild(box);
+
+        setTimeout(() => {
+            box.style.opacity = "1";
+        }, 10);
+
+        setTimeout(() => {
+            box.style.opacity = "0";
+            setTimeout(() => box.remove(), 500);
+        }, 6000);
+    });
+}

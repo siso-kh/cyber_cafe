@@ -9,7 +9,8 @@ import {
     extract_array,
     courbe,
     updateThermometer,
-    gauge
+    gauge,
+    checkAlerts
 } from './functions.js'
 
 const appSettings = {
@@ -20,9 +21,7 @@ const app = initializeApp(appSettings);
 const database = getDatabase(app);
 const data = ref(database);
 
-// Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', async () => {
-    // Setup return button
     let returne = document.querySelector(".return");
     if (returne) {
         returne.addEventListener("click", () => {
@@ -32,7 +31,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.warn('Return button element not found');
     }
 
-    // Main application logic
     try {
         const stats = await get_stats(data);
 
@@ -51,6 +49,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             updateThermometer(post[1].temp)
 
             gauge(post[1].internet)
+            checkAlerts(post[1].internet, post[1].temp);
         } else {
             console.log('No data found for PC ID:', id);
             div_id.innerHTML += '<br>No data available for this PC';
@@ -58,5 +57,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (error) {
         console.error('Error loading data:', error);
     }
+
 });
 
