@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pc</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" type="module" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_back" />
+    <icon href="./images/icon.jpeg" type="image/x-icon"></icon>
+    <style>
+    .material-symbols-outlined {
+        font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+</head>
+<body>
+    <h1>PC page</h1>
+    <section class="return">
+        <span>return</span>
+        <span class="material-symbols-outlined">
+            arrow_back
+        </span>
+
+        
+    </section>
+    <div class="pccontent">
+        <div class="poste_id"></div>
+        <div class="termo">
+            <h2>tempreture</h2>
+            <div class="thermometer-container">
+                <div id="thermometerBody" class="thermometer-body">
+                    <div id="thermometerFluid" class="thermometer-fluid"></div>
+                </div>
+            <div id="thermometerValue" class="thermometer-value">--</div>
+        </div>
+    </div>
+        <div class="courbe"><canvas id="courbeCanvas"></canvas></div>
+        <div class="internet"><span>internet speed</span><canvas id="myChart"></canvas></div>
+        </div>
+    </div>
+    
+</body>
+</html>
