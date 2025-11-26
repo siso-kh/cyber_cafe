@@ -1,6 +1,7 @@
-*{
+.pc, .return {
     user-select: none;
 }
+
 body {
     font-family: Arial, sans-serif;
     background-color: #000001;
@@ -44,58 +45,77 @@ h1::after {
     flex-wrap: wrap;
     justify-content: center;
 }
-.pc {
+/* .pc {
     margin: 10px;
     margin-left: 40px;
-    padding: 20px;
+    padding: 1.5rem;
     border: 2px solid #5c05f1;
     width: 300px;
     border-radius: 15px;
-    height: 75px;
+    height: auto;
     text-align: center;
     cursor: pointer;
-    font-size: xx-large;
+    font-size: 2rem;
     text-shadow: #FFF 0px 0px 10px;
+    position: relative;
+    overflow: visible;
 }
-.pc:hover {
-    box-shadow: blue 0px 0px 30px,
-                white 0px 0px 20px;
+.pc::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: 0 0 15px #5c05f1;
+    opacity: 0.6;
+    z-index: -1;
+    transition: opacity .3s ease, transform .3s ease;
     
-    font-size: 40px;
-    transform: scale(1.05);
-    transition: all 0.3s ease-in-out;
+}
 
-}
-.pc:active {
-    box-shadow: blue 0px 0px 10px,
-                white 0px 0px 5px;
-    transform: scale(0.95);
-    transition: all 0.1s ease-in-out;
-}
+.pc:hover::before {
+    opacity: 1;
+    transform: scale(1.1);
+} */
+
 
 .pccontent {
+    padding-top: 10px;
+    padding-right: 10px;
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 2fr 3fr 2fr;
     grid-template-rows: 1fr 1fr;
     width: 80%;
     height: 60%;
     border: none;
+    margin: auto;
 
 }
 .pccontent > div  {
-    margin: 10px;
-    padding: 10px;
+    margin: 20px;
+    padding-right: 10px;
     border: 2px solid #5c05f1;
     border-radius: 10px;
     text-align: center;
     font-size: large;
     text-shadow: #FFF 0px 0px 5px;
-    padding: -20px;
+   
 }
 .termo {
     grid-column: 3;
     grid-row-start: 1;
-    grid-row-end: 3;
+    grid-row-end: 1;
+}
+
+.courbe {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.courbe canvas {
+    width: 100% !important;
+    height: 320px !important;
 }
 
 .pc_id {
@@ -156,4 +176,359 @@ h1::after {
     background-image: linear-gradient(blue,purple);
     font-size: x-large;
 
+}
+h2 {
+    color: #FFF;
+    text-shadow: 2px 2px 10px #5c05f1;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+span {
+    color: #FFF;
+    text-shadow: 2px 2px 10px #5c05f1;
+    font-size: 25px;
+    margin-bottom: 10px;
+    
+    margin-top: 0px;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #0E1117 0%, #1C2128 100%);
+  font-family: Inter, system-ui, sans-serif;
+  color: #F1F1F1;
+  overflow-x: hidden;
+}
+
+
+nav {
+  width: 100%;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-title {
+  font-size: 22px;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  margin-left:25px;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-right button {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: #bbb;
+  cursor: pointer;
+  font-family: "Space Grotesk", sans-serif;
+  transition: 0.3s;
+  margin-right: 25px;
+}
+
+.nav-right button:hover {
+  color: #c09bff;
+}
+
+
+.nav-active {
+  color: #c09bff !important;
+  border-bottom: 2px solid #0e0b3a;
+  padding-bottom: 3px;
+}
+
+.header-section {
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 40px;
+}
+
+.header-section h1 {
+  font-size: 48px;
+  font-family: "Space Grotesk", sans-serif;
+  text-shadow: 0 0 30px rgba(156, 123, 255, 0.3);
+}
+
+.header-section p {
+  color: #aaa;
+  margin-top: 10px;
+}
+
+
+.grid {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 26px;
+}
+
+.card {
+  padding: 26px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  transition: 0.35s;
+  cursor: pointer;
+  text-align: center;
+  width: 145px;
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-6px);
+}
+
+
+.status {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.status-text {
+  font-size: 12px;
+  color: #bbb;
+}
+
+.icon-box {
+  padding: 16px;
+  border-radius: 20px;
+  margin: auto;
+  width: 60px;
+  height: 60px;
+  background: rgba(156, 123, 255, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 18px;
+  
+}
+.pc-img {
+    width: 250px;
+    height: 100px;
+    object-fit: cover; 
+    border-radius: 6px; /* optional */
+}
+.machine-name {
+  font-size: 20px;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.current-user {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+
+
+.cta-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 50px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-active {
+  background: linear-gradient(135deg, #4e3179, #cd05f1);
+  color: #0E1117;
+}
+
+.btn-active:hover {
+  transform: scale(1.05);
+  color: #38c4cc;
+}
+
+.btn-disabled {
+  background: rgba(255, 255, 255, 0.15);
+  color: #999;
+  cursor: not-allowed;
+}
+
+
+.light-trail {
+  position: absolute;
+  height: 1px;
+  width: 380px;
+  opacity: 0.2;
+  background: linear-gradient(90deg, transparent, #9C7BFF);
+  animation: floatTrail 18s linear infinite;
+}
+
+@keyframes floatTrail {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+
+.idle-low-opacity {
+  opacity: 0.35;
+}
+.idle-full-opacity {
+  opacity: 1;
+}
+.icon-box::before {
+    content: "";
+}
+
+/* Responsive grid behavior for dashboard cards */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .card {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  .header-section {
+    margin-top: 30px;
+    margin-bottom: 24px;
+  }
+
+  .header-section h1 {
+    font-size: 32px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    gap: 16px;
+  }
+
+  .card {
+    width: 100%;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 36px;
+    padding: 16px;
+  }
+
+  .pccontent {
+    width: 100%;
+    height: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .pccontent > div {
+    margin: 12px 0;
+  }
+
+  .termo {
+    grid-column: 1;
+    grid-row-start: auto;
+    grid-row-end: auto;
+  }
+
+  .pc_id {
+    grid-column: 1;
+    grid-row-start: auto;
+    grid-row-end: auto;
+  }
+
+  .thermometer-container {
+    padding-top: 10px;
+    width: 35vw;
+    max-width: 120px;
+    height: auto;
+  }
+
+  .thermometer-value {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+  }
+
+  .courbe,
+  .internet {
+    width: 100%;
+  }
+
+  canvas {
+    max-width: 100%;
+  }
+
+  .return {
+    width: 70px;
+    height: 70px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 28px;
+  }
+
+  span {
+    font-size: 18px;
+  }
+
+  .pccontent > div {
+    font-size: 0.9rem;
+    margin: 10px 0;
+  }
+}
+.login_history {
+    grid-column: 2;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

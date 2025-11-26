@@ -3,24 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cyber cafe</title>
+    <title>Cyber Café Dashboard</title>
+
+  
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.css" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
     <script src="index.js" type="module" defer></script>
-    <icon href="./images/icon.jpeg" type="image/x-icon"></icon>
 </head>
+
 <body>
-    <h1>Cyber cafe</h1>
+
     
-    <div class="content">
-        <div class="pc" id="1">PC 1</div>
-        <div class="pc" id="2">PC 2</div>
-        <div class="pc" id="3">PC 3</div>
-        <div class="pc" id="4">PC 4</div>
-        <div class="pc" id="5">PC 5</div>
-        <div class="pc" id="6">PC 6</div>
-        <div class="pc" id="7">PC 7</div>
-        <div class="pc" id="8">PC 8</div>
+    <nav>
+        <div class="nav-left">
+            <span class="nav-title">         Cyber Café</span>
+        </div>
+
+        <div class="nav-right">
+            <button class="nav-active">Dashboard</button>
+            <button>Settings</button>
+            <button>Reports</button>
+        </div>
+    </nav>
+
+  
+    <div class="header-section">
+        <h1>Choose Your Machine</h1>
+        <p>Select a PC to start or monitor a session</p>
     </div>
+
+    <div class="grid">
+
+       
+        <div class="card" id="1">
+            <div class="status">
+                <div class="status-dot"></div>
+                <span class="status-text">Unknown</span>
+            </div>
+           <div class="icon-box">
+    <i class="lucide-monitor" style="font-size:32px;"></i>
+
+    <img 
+        src="https://www.bing.com/th/id/OIP.xN8fs9Ov5-PHWP6vAwCzxgHaHa?w=227&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" 
+        class="pc-img"
+    >
+</div>
+            <div class="machine-name">PC 1</div>
+            <div class="current-user">No user</div>
+            <button id="1" class="cta-btn btn-active pc">Select</button>
+        </div>
+
+        <div class="card" id="2">
+            <div class="status">
+                <div class="status-dot"></div>
+                <span class="status-text">Unknown</span>
+            </div>
+            <div class="icon-box">
+    <i class="lucide-monitor" style="font-size:32px;"></i>
+
+    <img 
+        src="https://www.bing.com/th/id/OIP.xN8fs9Ov5-PHWP6vAwCzxgHaHa?w=227&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" 
+        class="pc-img"
+    >
+</div>
+            <div class="machine-name">PC 2</div>
+            <div class="current-user">No user</div>
+            <button id="2" class="cta-btn btn-active pc">Select</button>
+        </div>
+
+  
+        <div class="card" id="3">
+            <div class="status">
+                <div class="status-dot"></div>
+                <span class="status-text">Unknown</span>
+            </div>
+            <div class="icon-box">
+    <i class="lucide-monitor" style="font-size:32px;"></i>
+
+    <img 
+        src="https://www.bing.com/th/id/OIP.xN8fs9Ov5-PHWP6vAwCzxgHaHa?w=227&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" 
+        class="pc-img"
+    >
+</div>
+            <div class="machine-name">PC 3</div>
+            <div class="current-user">No user</div>
+            <button id="3" class="cta-btn btn-active pc">Select</button>
+        </div>
+
+        <div class="card" id="4">
+            <div class="status">
+                <div class="status-dot"></div>
+                <span class="status-text">Unknown</span>
+            </div>
+            <div class="icon-box">
+    <i class="lucide-monitor" style="font-size:32px;"></i>
+
+    <img 
+        src="https://www.bing.com/th/id/OIP.xN8fs9Ov5-PHWP6vAwCzxgHaHa?w=227&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" 
+        class="pc-img"
+    >
+</div>
+            <div class="machine-name">PC 4</div>
+            <div class="current-user">No user</div>
+            <button id="4" class="cta-btn btn-active pc">Select</button>
+        </div>
+
+      
+        <div class="card" id="5">
+            <div class="status">
+                <div class="status-dot"></div>
+                <span class="status-text">Unknown</span>
+            </div>
+           <div class="icon-box">
+    <i class="lucide-monitor" style="font-size:32px;"></i>
+
+    <img 
+        src="https://www.bing.com/th/id/OIP.xN8fs9Ov5-PHWP6vAwCzxgHaHa?w=227&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" 
+        class="pc-img"
+    >
+</div>
+            <div class="machine-name">PC 5</div>
+            <div class="current-user">No user</div>
+            <button id="5" class="cta-btn btn-active pc">Select</button>
+        </div>
+
     
+        <div class="card" id="6">
+            <div class="status">
+                <div class="status-dot"></div>
+                <span class="status-text">Unknown</span>
+            </div>
+           <div class="icon-box">
+    <i class="lucide-monitor" style="font-size:32px;"></i>
+
+    <img 
+        src="https://www.bing.com/th/id/OIP.xN8fs9Ov5-PHWP6vAwCzxgHaHa?w=227&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" 
+        class="pc-img"
+    >
+</div>
+            <div class="machine-name">PC 6</div>
+            <div class="current-user">No user</div>
+            <button id="6" class="cta-btn btn-active pc">Select</button>
+        </div>
+
+        <div class="card" id="7">
+            <div class="status">
+                <div class="status-dot"></div>
+                <span class="status-text">Unknown</span>
+            </div>
+            <div class="icon-box">
+    <i class="lucide-monitor" style="font-size:32px;"></i>
+
+    <img 
+        src="https://www.bing.com/th/id/OIP.xN8fs9Ov5-PHWP6vAwCzxgHaHa?w=227&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" 
+        class="pc-img"
+    >
+</div>
+            <div class="machine-name">PC 7</div>
+            <div class="current-user">No user</div>
+            <button id="7" class="cta-btn btn-active pc">Select</button>
+        </div>
+
+    
+        <div class="card" id="8">
+            <div class="status">
+                <div class="status-dot"></div>
+                <span class="status-text">Unknown</span>
+            </div>
+            <div class="icon-box">
+    <i class="lucide-monitor" style="font-size:32px;"></i>
+
+    <img 
+        src="https://www.bing.com/th/id/OIP.xN8fs9Ov5-PHWP6vAwCzxgHaHa?w=227&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" 
+        class="pc-img"
+    >
+</div>
+            <div class="machine-name">PC 8</div>
+            <div class="current-user">No user</div>
+            <button id="8" class="cta-btn btn-active pc">Select</button>
+        </div>
+
+    </div>
+
+    <div id="light-container"></div>
+    <div><br>   </div>
+<br>
+<br>
 </body>
 </html>

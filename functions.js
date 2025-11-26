@@ -1,5 +1,9 @@
 import {ref, remove, onValue } from  "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"
 
+// Keep references to current Chart.js instances so we can destroy them on update
+let courbeChartInstance = null;
+let gaugeChartInstance = null;
+
 export function remove_all(data){
     onValue(data, (snapshot) => {
         if (snapshot.exists()) {
@@ -79,11 +83,17 @@ export function accumelate(arr){
 export function courbe(arr){
     let canvas = document.querySelector('#courbeCanvas');
     let ctx = canvas.getContext('2d');
+
     let costs = arr.map(e => e.cost);
     let times = arr.map(e => e.temp);
     costs = accumelate(costs);
     times = accumelate(times);
-    let myChart = new Chart(ctx, {
+    // Destroy previous chart instance if it exists to avoid Chart.js canvas reuse errors
+    if (courbeChartInstance) {
+        courbeChartInstance.destroy();
+    }
+
+    courbeChartInstance = new Chart(ctx, {
         type: 'line',
         data: {
             labels: times,
@@ -103,6 +113,16 @@ export function courbe(arr){
             }
         }
     });
+    const courbeContainer = document.querySelector('.courbe');
+    if (courbeContainer) {
+        const existingTotal = courbeContainer.querySelector('.total-cost');
+        if (existingTotal) existingTotal.remove();
+
+        const total = document.createElement('h2');
+        total.className = 'total-cost';
+        total.innerText = 'Total: ' + costs[costs.length - 1];
+        courbeContainer.appendChild(total);
+    }
 }
 
 export function updateThermometer(value) {
@@ -231,8 +251,16 @@ export function gauge(input){
         plugins:[gaugeNeedle,gaugeFlowMeter]
     };
 
-    const myChart = new Chart(
-      document.getElementById('myChart'),
+    const gaugeCanvas = document.getElementById('myChart');
+    if (!gaugeCanvas) return;
+
+    // Destroy previous gauge chart instance if it exists
+    if (gaugeChartInstance) {
+        gaugeChartInstance.destroy();
+    }
+
+    gaugeChartInstance = new Chart(
+      gaugeCanvas,
       config
     );
 
@@ -308,4 +336,62 @@ export function checkAlerts(internetSpeed, temperature) {
             setTimeout(() => box.remove(), 500);
         }, 6000);
     });
+}
+
+export function history(arr){
+    let history = document.getElementById("history");
+    if (!history) {
+        history = document.createElement("div");
+        history.id = "history";
+        history.style.position = "fixed";
+        history.style.top = "20px";
+        history.style.right = "20px";
+        history.style.zIndex = "9999";
+        history.style.display = "flex";
+        history.style.flexDirection = "column";
+        history.style.gap = "10px";
+        document.body.appendChild(history);
+    }
+
+    history.innerHTML = "";
+
+    if (!Array.isArray(arr) || arr.length === 0) {
+        const emptyMsg = document.createElement('p');
+        emptyMsg.textContent = 'No history available.';
+        history.appendChild(emptyMsg);
+        return;
+    }
+
+    const table = document.createElement('table');
+    table.style.borderCollapse = "collapse";
+
+    const thead = document.createElement('thead');
+    const headerRow = document.createElement('tr');
+    ['Internet', 'Temperature', 'Activity', 'Timestamp'].forEach(header => {
+        const th = document.createElement('th');
+        th.textContent = header;
+        th.style.padding = "10px";
+        th.style.border = "1px solid black";
+        headerRow.appendChild(th);
+    });
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+
+    const tbody = document.createElement('tbody');
+    arr.forEach(row => {
+        // `extract_array` returns plain objects like { internet, temp, activity, timestamp, ... }
+        if (!row) return;
+        const tr = document.createElement('tr');
+        ['internet', 'temp', 'activity', 'timestamp'].forEach(key => {
+            const td = document.createElement('td');
+            td.textContent = row[key] ?? '';
+            td.style.padding = "10px";
+            td.style.border = "1px solid black";
+            tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+
+    history.appendChild(table);
 }
