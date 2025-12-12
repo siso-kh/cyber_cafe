@@ -362,6 +362,13 @@ export function history(arr){
         return;
     }
 
+    // Sort by timestamp in descending order (most recent first)
+    const sortedArr = [...arr].sort((a, b) => {
+        const timeA = new Date(a.timestamp).getTime();
+        const timeB = new Date(b.timestamp).getTime();
+        return timeB - timeA;
+    });
+
     const table = document.createElement('table');
     table.style.borderCollapse = "collapse";
 
@@ -378,8 +385,7 @@ export function history(arr){
     table.appendChild(thead);
 
     const tbody = document.createElement('tbody');
-    arr.forEach(row => {
-        // `extract_array` returns plain objects like { internet, temp, activity, timestamp, ... }
+    sortedArr.forEach(row => {
         if (!row) return;
         const tr = document.createElement('tr');
         ['internet', 'temp', 'activity', 'timestamp'].forEach(key => {
